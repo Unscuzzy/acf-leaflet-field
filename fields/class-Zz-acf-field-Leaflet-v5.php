@@ -26,10 +26,10 @@ if ( !class_exists( 'Zz_acf_field_Leaflet' ) && class_exists( 'acf_field' ) ) {
             $this->label = __( 'Leaflet Map', 'zz' );
             $this->category = 'jquery';
             $this->defaults = array(
-                'lat' => '43.6236',
-                'lng' => '3.913',
+                'lat' => '0',
+                'lng' => '0',
                 'zoom' => 14,
-                'height' => 400
+                'height' => 320
             );
 
             $this->settings = $settings;
@@ -109,9 +109,6 @@ if ( !class_exists( 'Zz_acf_field_Leaflet' ) && class_exists( 'acf_field' ) ) {
          */
         function render_field($field)
         {
-            // TODO : We can't delete the value in post->edit
-            // TODO : Apply some CSS rules (delete algolia search "x" symbol)
-
             if ( empty( $field['value'] ) )
                 $field['value'] = array();
 
@@ -119,7 +116,8 @@ if ( !class_exists( 'Zz_acf_field_Leaflet' ) && class_exists( 'acf_field' ) ) {
             $field['value'] = wp_parse_args( $field['value'], array(
                 'address' => '',
                 'lat' => '',
-                'lng' => ''
+                'lng' => '',
+                'zoom' => ''
             ) );
 
             // default options
@@ -127,20 +125,18 @@ if ( !class_exists( 'Zz_acf_field_Leaflet' ) && class_exists( 'acf_field' ) ) {
                 if ( empty( $field[$k] ) )
                     $field[$k] = $v;
             }
-
             /*
             echo '<pre>';
             print_r( $field );
             echo '</pre>';
             */
-
             // vars
             $atts = array(
                 'id' => $field['id'],
                 'class' => "acf-leaflet-map {$field['class']}",
                 'data-lat' => $field['value']['lat'] ? $field['value']['lat'] : $field['lat'],
                 'data-lng' => $field['value']['lng'] ? $field['value']['lng'] : $field['lng'],
-                'data-zoom' => $field['zoom'],
+                'data-zoom' => $field['value']['zoom'] ? $field['value']['zoom'] : $field['zoom']
             );
             ?>
 
@@ -152,12 +148,12 @@ if ( !class_exists( 'Zz_acf_field_Leaflet' ) && class_exists( 'acf_field' ) ) {
                     endforeach; ?>
                 </div>
 
-                <div id="<?php echo esc_attr( $field['id']); ?>-map" style="<?php echo esc_attr( 'height: ' . $field['height'] . 'px' ); ?>"></div>
+                <input type="text" id="<?php echo esc_attr( $field['id'] ); ?>-search" class="form-control"
+                       value="<?php echo esc_attr( $field['value']['address'] ) ?>"
+                       placeholder="<?php echo __( 'Search an address', 'zz' ); ?>">
 
-                <hr>
-
-                <input type="search" id="<?php echo esc_attr( $field['id']); ?>-search" class="form-control"
-                       value="<?php echo esc_attr( $field['value']['address'] ) ?>">
+                <div id="<?php echo esc_attr( $field['id'] ); ?>-map"
+                     style="height:<?php echo esc_attr( $field['height'] ); ?>px; z-index: 1;"></div>
             </div>
             <?php
         }
@@ -179,13 +175,12 @@ if ( !class_exists( 'Zz_acf_field_Leaflet' ) && class_exists( 'acf_field' ) ) {
         function validate_value($valid, $value, $field, $input)
         {
             // bail early if not required
-            if ( !$field['required'] ) {
+            if ( !$field['required'] )
                 return $valid;
-            }
 
-            if ( empty( $value ) || empty( $value['lat'] ) || empty( $value['lng'] ) ) {
+            if ( empty( $value ) || empty( $value['lat'] ) || empty( $value['lng'] ) )
                 return false;
-            }
+
 
             return $valid;
 
@@ -205,9 +200,9 @@ if ( !class_exists( 'Zz_acf_field_Leaflet' ) && class_exists( 'acf_field' ) ) {
         function update_value($value, $post_id, $field)
         {
 
-            if ( empty( $value ) || empty( $value['lat'] ) || empty( $value['lng'] ) ) {
+            if ( empty( $value ) || empty( $value['lat'] ) || empty( $value['lng'] ) )
                 return false;
-            }
+
             return $value;
         }
 
@@ -220,10 +215,6 @@ if ( !class_exists( 'Zz_acf_field_Leaflet' ) && class_exists( 'acf_field' ) ) {
          */
         function input_admin_enqueue_scripts()
         {
-
-            // TODO : I must place leaflet and places in header
-            // or place code in document.ready but I can't, it's a problem
-
             // vars
             $url = $this->settings['url'];
 

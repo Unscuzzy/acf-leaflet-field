@@ -15,21 +15,19 @@ This ACF field type is compatible with [ACF 5 Pro](https://www.advancedcustomfie
 
 
 ## To do
-* Add multi markers
-* Auto-complete backend address leaflet field on marker's clicked
-* Add JS map leaflet-algolia support like marker onClick auto complete, popover, name.
-* Clean using CSS
+* Add multi markers ?
+* Add front-end support ? 
 
 ## Bugs
-* We can add only one backend map / ACF Fields group -> C'est bon ? 
-* On ne peut pas supprimer les champs
-* Il y a des lat/lng par default mais pas d'adresse dans algolia
+* 
 
 ## Credits
 * [ACF Field Type Template](https://www.advancedcustomfields.com/resources/creating-a-new-field-type/)
 is a starter-kit for creating a new field type plugin.
 * [Leaflet JS](https://leafletjs.com/) is an open-source JavaScript library 
 for mobile-friendly interactive maps
+* [Algolia > Places](https://community.algolia.com/places/) provides a fast, 
+distributed and easy way to use address search autocomplete JavaScript library on your website.
 
 ## Authors
 * **Unscuzzy** - *Web agency* - [unscuzzy.com](https://unscuzzy.com)

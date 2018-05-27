@@ -6,23 +6,24 @@
     function initialize_field($field) {
 
         // Get var from this file
-        let field_key = $field[0].dataset.key;
-        let fieldElt = $('#acf-' + field_key).get(0);
-        let data = {
+        const field_key = 'acf-' + $field[0].dataset.key;
+        const fieldElt = $('#' + field_key).get(0);
+        const data = {
             lat: fieldElt.getAttribute('data-lat'),
             lng: fieldElt.getAttribute('data-lng'),
-            zoom: fieldElt.getAttribute('data-zoom'),
-            mapID: 'acf-' + field_key + '-map',
-            searchID: '#acf-' + field_key + '-search'
+            zoom: fieldElt.getAttribute('data-zoom')
         };
 
         // Init algolia search
+        const searchElt = $('#' + field_key + '-search');
         const placesAutocomplete = places({
-            container: $(data.searchID).get(0)
+            container: searchElt.get(0)
         });
 
         // Init leaflet map
-        const map = L.map(data.mapID).setView([data.lat, data.lng], data.zoom);
+        const map = L.map(field_key + '-map', {
+            scrollWheelZoom: false
+        }).setView([data.lat, data.lng], data.zoom);
 
         // Set default backend providers (theme)
         L.tileLayer.provider('Wikimedia').addTo(map);
@@ -33,6 +34,14 @@
         // Prepare markers for search functions
         let markers = [];
 
+        // Clear html input when input val is empty
+        searchElt.on('change', function (e) {
+            if ($(this).val() === '') {
+                handleOnClear();
+                updateHTML();
+            }
+        });
+
         // Update ACF input val from Algolia search change
         placesAutocomplete
             .on('suggestions', (e) => {
@@ -42,17 +51,31 @@
                 handleOnCursorchanged(e)
             })
             .on('change', (e) => {
-                updateHTML(e);
-                handleOnChange(e)
+                handleOnChange(e);
+                updateHTML(e)
             })
             .on('clear', () => {
                 handleOnClear()
             });
 
+        // Save the new zoom in HTML
+        map.on('zoom', () => {
+            $('#' + field_key + ' .acf-hidden .input-zoom').attr('value', map.getZoom());
+        });
+
         function updateHTML(e) {
-            $('#acf-' + field_key + ' .acf-hidden input.input-lat').attr('value', e.suggestion.latlng.lat);
-            $('#acf-' + field_key + ' .acf-hidden input.input-lng').attr('value', e.suggestion.latlng.lng);
-            $('#acf-' + field_key + ' .acf-hidden input.input-address').attr('value', e.suggestion.value);
+            let hiddenInputs = '#' + field_key + ' .acf-hidden';
+            if (e) {
+                console.log(e.suggestion, map.getZoom());
+                $(hiddenInputs + ' .input-lat').attr('value', e.suggestion.latlng.lat);
+                $(hiddenInputs + ' .input-lng').attr('value', e.suggestion.latlng.lng);
+                $(hiddenInputs + ' .input-address').attr('value', e.suggestion.value);
+                $(hiddenInputs + ' .input-zoom').attr('value', map.getZoom());
+            } else {
+                $(hiddenInputs + ' input').each(function () {
+                    $(this).attr('value', '')
+                })
+            }
         }
 
         function handleOnSuggestions(e) {
@@ -75,11 +98,12 @@
                         markers = [marker];
                         marker.setOpacity(1);
                         findBestZoom();
+                        console.log(map.getZoom())
                     } else {
                         removeMarker(marker);
                     }
                 });
-            if (markers.length === 1) map.setZoom(14);
+
         }
 
         function handleOnClear() {
