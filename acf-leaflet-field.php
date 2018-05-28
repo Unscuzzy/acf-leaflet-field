@@ -1,13 +1,13 @@
 <?php
 
 /*
-Plugin Name: Advanced Custom Fields: Leaflet
+Plugin Name: Advanced Custom Fields: Leaflet Field
 Plugin URI: https://unscuzzy.com
 Description: This plugin adds a Leaflet map field to the Advanced Custom Fields plugin.
 Version: 1.0.0
 Author: Unscuzzy
 Author URI: https://unscuzzy.com
-License: GPLv2 or later
+License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 

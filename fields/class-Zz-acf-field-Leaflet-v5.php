@@ -219,12 +219,16 @@ if ( !class_exists( 'Zz_acf_field_Leaflet' ) && class_exists( 'acf_field' ) ) {
             $url = $this->settings['url'];
 
             // register & include JS
+            wp_register_script( 'jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js', array(), null, true );
             wp_register_script( 'leaflet', 'https://cdn.jsdelivr.net/leaflet/1/leaflet.js', array(), null, true );
             wp_register_script( 'places', 'https://cdn.jsdelivr.net/npm/places.js@1.6.0', array(), null, true );
             wp_register_script( 'leaflet-providers', $url . "assets/js/leaflet-providers.min.js", array('leaflet'), null, true );
             wp_register_script( 'input', $url . "assets/js/input.js", array('jquery', 'leaflet', 'leaflet-providers', 'places'), null, true );
 
-            wp_enqueue_script( 'jquery' );
+
+            if ( !wp_script_is( 'jquery', 'enqueued' ) )
+                wp_enqueue_script( 'jquery' );
+
             wp_enqueue_script( 'leaflet' );
             wp_enqueue_script( 'input' );
             wp_enqueue_script( 'places' );
