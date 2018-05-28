@@ -1,0 +1,56 @@
+# Copyright (C) 2018 ACF Leaflet Field
+# This file is distributed under the same license as the ACF Leaflet Field package.
+msgid ""
+msgstr ""
+"Project-Id-Version: ACF Leaflet Field\n"
+"POT-Creation-Date: 2018-05-28 14:19+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Unscuzzy <contact@unscuzzy.com>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;"
+"_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;"
+"esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: fields/class-Zz-acf-field-Leaflet-v5.php:26
+msgid "Leaflet Map"
+msgstr "Carte Leaflet"
+
+#: fields/class-Zz-acf-field-Leaflet-v5.php:64
+#: fields/class-Zz-acf-field-Leaflet-v5.php:74
+msgid "Center"
+msgstr "Centrer"
+
+#: fields/class-Zz-acf-field-Leaflet-v5.php:65
+#: fields/class-Zz-acf-field-Leaflet-v5.php:75
+msgid "Center the initial map"
+msgstr "Centrer la carte initiale"
+
+#: fields/class-Zz-acf-field-Leaflet-v5.php:85
+msgid "Zoom"
+msgstr "Zoom"
+
+#: fields/class-Zz-acf-field-Leaflet-v5.php:86
+msgid "Set the initial zoom level"
+msgstr "Definir le zoom initial"
+
+#: fields/class-Zz-acf-field-Leaflet-v5.php:94
+msgid "Height"
+msgstr "Hauteur"
+
+#: fields/class-Zz-acf-field-Leaflet-v5.php:95
+msgid "Customise the map height"
+msgstr "Definir la hauteur de la carte"
+
+#: fields/class-Zz-acf-field-Leaflet-v5.php:153
+msgid "Search an address"
+msgstr "Chercher une adresse"
