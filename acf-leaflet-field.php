@@ -1,5 +1,4 @@
 <?php
-
 /*
 Plugin Name: Advanced Custom Fields: Leaflet Field
 Plugin URI: https://unscuzzy.com
@@ -9,7 +8,22 @@ Author: Unscuzzy
 Author URI: https://unscuzzy.com
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-*/
+Copyright (C) 2018  Unscuzzy (email : contact@unscuzzy.com)
+
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public License
+    as published by the Free Software Foundation; either version 2
+    of the License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
 
 // exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
@@ -24,13 +38,13 @@ if ( !class_exists( 'Zz_acf_plugin_Leaflet' ) ) {
         var $settings;
 
         /**
-        *  __construct
-        *
-        *  @since	1.0.0
-        *
-        *  @param	void
-        *  @return	void
-        */
+         *  __construct
+         *
+         * @since    1.0.0
+         *
+         * @param    void
+         * @return    void
+         */
 
         function __construct()
         {
@@ -48,13 +62,13 @@ if ( !class_exists( 'Zz_acf_plugin_Leaflet' ) ) {
 
 
         /**
-        *  This function will include the field type class
-        *
-        *  @since	1.0.0
-        *
-        *  @param	$version (int) major ACF version. Defaults to 4
-        *  @return	void
-        */
+         *  This function will include the field type class
+         *
+         * @since    1.0.0
+         *
+         * @param    $version (int) major ACF version. Defaults to 4
+         * @return    void
+         */
 
         function include_field($version = 5)
         {
