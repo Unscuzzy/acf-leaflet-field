@@ -1,0 +1,27 @@
+{
+  "name": "acf-leaflet-field",
+  "version": "1.0.0",
+  "description": " This plugin adds a Leaflet map field to the Advanced Custom Fields plugin.",
+  "main": "acf-leaflet-field.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.unscuzzy.com/lab/acf-leaflet-field.git"
+  },
+  "keywords": [
+    "plugin",
+    "wordpress",
+    "acf",
+    "leaflet",
+    "map",
+    "algolia"
+  ],
+  "author": "Unscuzzy",
+  "license": "GPL-2.0-only",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-wp-pot": "^2.3.1"
+  }
+}
