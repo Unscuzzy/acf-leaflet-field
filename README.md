@@ -1,25 +1,10 @@
 # ACF Leaflet Field
 
-Welcome to the Advanced Custom Fields Leaflet field repository on Gitlab.
+Welcome to the repository for "Advanced Custom Fields: Leaflet Field" WordPress plugin.
 
 > This plugin adds a Leaflet map field to the Advanced Custom Fields plugin.
 
-#### Compatibility 
-This ACF field type is compatible with [ACF 5 Pro](https://www.advancedcustomfields.com/pro/) only.
-
-## Installation
-1. Copy the `acf-leaflet-field` folder into your `wp-content/plugins` folder
-2. Activate the Leaflet plugin via the plugins admin page
-3. Create a new field via ACF and select the Leaflet type
-4. Read the description above for usage instructions 
-
-
-## To do
-* Add multi markers ?
-* Add front-end support ? 
-
-## Bugs
-* 
+* WordPress Plugin Page: https://wordpress.org/plugins/acf-leaflet-field/
 
 ## Credits
 * [ACF Field Type Template](https://www.advancedcustomfields.com/resources/creating-a-new-field-type/)
@@ -32,5 +17,3 @@ distributed and easy way to use address search autocomplete JavaScript library o
 
 ## Authors
 * **Unscuzzy** - *Web agency* - [unscuzzy.com](https://unscuzzy.com)
-
-
