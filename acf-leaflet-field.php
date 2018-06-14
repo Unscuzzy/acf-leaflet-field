@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Advanced Custom Fields: Leaflet Field
+Plugin Name: Advanced Custom Fields: Leaflet Map Field
 Plugin URI: https://unscuzzy.com
 Description: This plugin adds a Leaflet map field to the Advanced Custom Fields plugin.
 Version: 1.0.0

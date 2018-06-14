@@ -1,4 +1,4 @@
-=== Advanced Custom Fields: Leaflet Field ===
+=== Advanced Custom Fields: Leaflet Map Field ===
 Contributors: unscuzzy
 Tags: acf, plugin, wordpress, leaflet
 Requires at least: 4.9.6
