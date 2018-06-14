@@ -26,7 +26,7 @@
         }).setView([data.lat, data.lng], data.zoom);
 
         // Set default backend providers (theme)
-        L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
+        L.tileLayer.provider('Wikimedia').addTo(map);
 
         // Add the default/choised marker
         L.marker({'lat': data.lat, 'lng': data.lng}, {}).addTo(map);
