@@ -6,7 +6,8 @@
  */
 
 let gulp = require('gulp'),
-    wpPot = require('gulp-wp-pot');
+    wpPot = require('gulp-wp-pot'),
+    zip = require('gulp-zip');
 
 gulp.task('default');
 
@@ -18,4 +19,20 @@ gulp.task('pot', function () {
             package: 'ACF Leaflet Field'
         }))
         .pipe(gulp.dest('lang/zz.pot'));
+});
+
+// Build WordPress zip
+gulp.task('zip', () => {
+    return gulp.src([
+        './**/*',
+        '!./.gitignore',
+        '!./gulpfile.js',
+        '!./package.json',
+        '!./package-lock.json',
+        '!./README.md',
+        '!./{node_modules,node_modules/**/*}',
+        '!./acf-leaflet-field.zip',
+    ])
+        .pipe(zip('acf-leaflet-field.zip'))
+        .pipe(gulp.dest('./'));
 });
